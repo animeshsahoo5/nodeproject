@@ -46,7 +46,7 @@ pipeline {
                 /usr/local/bin/pm2 save
 
                 '''
-                sh "node index.js"
+                
 
             }
         }
