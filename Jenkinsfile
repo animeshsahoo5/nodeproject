@@ -43,8 +43,6 @@ pipeline {
 
                 /usr/local/bin/pm2 start index.js --name myapp
 
-                /usr/local/bin/pm2 restart index.js --name myapp
-
                 /usr/local/bin/pm2 save
 
                 '''
