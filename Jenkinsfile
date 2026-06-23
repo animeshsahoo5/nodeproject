@@ -19,37 +19,50 @@
 // }
 
 
-pipeline {
+// pipeline {
 
-    agent any
+//     agent any
 
-    stages {
+//     stages {
 
-        stage('Build Stage') {
+//         stage('Build Stage') {
 
-            steps {
+//             steps {
 
-                sh 'npm install'
+//                 sh 'npm install'
 
-            }
-        }
-        stage('Deploy Stage') {
+//             }
+//         }
+//         stage('Deploy Stage') {
 
-            steps {
+//             steps {
 
-                sh '''
+//                 sh '''
 
-                /usr/local/bin/pm2 delete myapp || true
+//                 /usr/local/bin/pm2 delete myapp || true
 
-                /usr/local/bin/pm2 start index.js --name myapp
+//                 /usr/local/bin/pm2 start index.js --name myapp
 
-                /usr/local/bin/pm2 save
+//                 /usr/local/bin/pm2 save
 
-                '''
+//                 '''
                 
 
-            }
+//             }
+//         }
+//     }
+// }
+
+
+pipeline {
+agent any
+stages {
+
+    stage('Build Docker Image') {
+        steps {
+            sh 'docker build -t nodeapp:${BUILD_NUMBER} .'
         }
     }
+}
 }
 
